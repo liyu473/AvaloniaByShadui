@@ -2,6 +2,7 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using System.Linq;
+using AvaByShadUI.Extensions;
 using AvaByShadUI.Services;
 using Avalonia.Markup.Xaml;
 using AvaByShadUI.ViewModels;
@@ -11,8 +12,8 @@ namespace AvaByShadUI;
 
 public partial class App : Application
 {
-    private static ServiceProvider Service = new();
-    
+    public static ServiceProvider Service { get; } = new();
+
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -25,6 +26,10 @@ public partial class App : Application
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
             // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
             DisableAvaloniaDataAnnotationValidation();
+            
+            // Register dialogs(脱离ViewLocator的命名约定)
+            Service.RegisterDialogs();
+            
             desktop.MainWindow = new MainWindow
             {
                 DataContext = Service.GetService<MainWindowViewModel>()

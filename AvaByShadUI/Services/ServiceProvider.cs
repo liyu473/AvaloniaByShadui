@@ -13,6 +13,7 @@ namespace AvaByShadUI.Services;
 [Singleton<MainWindowViewModel>]
 [Singleton<HomeViewModel>]
 [Singleton<SettingsViewModel>]
+[Transient<AboutViewModel>]
 [Singleton(typeof(ThemeWatcher), Factory = nameof(ThemeWatcherFactory))]
 [Singleton(typeof(ILogger<>), Factory = nameof(CreateLoggerGeneric))]
 [Singleton(typeof(PageManager), Factory = nameof(PageManagerFactory))]

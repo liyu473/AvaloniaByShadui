@@ -6,6 +6,11 @@ namespace AvaByShadUI.Services;
 
 public sealed class PageManager(ServiceProvider serviceProvider)
 {
+    /// <summary>
+    /// 传入viewmodel类型（继承自INavigable或继承自ViewModelBase）
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <exception cref="InvalidOperationException"></exception>
     public void Navigate<T>() where T : INavigable
     {
         var attr = typeof(T).GetCustomAttribute<PageAttribute>();

@@ -4,8 +4,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:shadui="clr-namespace:ShadUI;assembly=ShadUI"
+    xmlns:vm="clr-namespace:AvaByShadUI.ViewModels"
     d:DesignHeight="450"
     d:DesignWidth="800"
+    x:DataType="vm:HomeViewModel"
     mc:Ignorable="d">
     <DockPanel LastChildFill="True">
         <StackPanel
@@ -16,7 +19,7 @@
             <TextBlock Classes="Title" Text="Home" />
             <TextBlock
                 Classes="p"
-                Text="主页"
+                Text="home page for testing dialog and toast within sukiui"
                 TextWrapping="Wrap" />
         </StackPanel>
 
@@ -25,8 +28,54 @@
                 MaxWidth="{StaticResource PageMaxWidth}"
                 Margin="{StaticResource PageMargin}"
                 Spacing="32">
+                <StackPanel Spacing="16">
+                    <TextBlock Classes="h4" Text="Dialog" />
+                    <TextBlock Classes="small" Text="Use dialog instead of messagebox in wpf" />
+                    <shadui:Card>
+                        <StackPanel
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal"
+                            Spacing="20">
+                            <Button
+                                Classes="Outline"
+                                Command="{Binding ShowDialogCommand}"
+                                Content="Common Dialog" />
+                            <Button
+                                Classes="Destructive"
+                                Command="{Binding ShowDestructiveDialogCommand}"
+                                Content="Destructive Dialog" />
+                        </StackPanel>
+                    </shadui:Card>
 
 
+                    <TextBlock Classes="small" Text="click background to disappear" />
+                    <shadui:Card>
+                        <Button
+                            Width="100"
+                            Classes="Primary"
+                            Command="{Binding ShowDismissCommand}"
+                            Content="Dismiss" />
+                    </shadui:Card>
+
+                    <TextBlock Classes="small" Text="custom dialog with action or func" />
+                    <shadui:Card>
+                        <StackPanel
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal"
+                            Spacing="20">
+                            <Button
+                                Classes="Secondary"
+                                Command="{Binding ShowActionCommand}"
+                                Content="Action" />
+                            <Button
+                                Classes="Secondary"
+                                Command="{Binding ShowCustomCommand}"
+                                Content="Action Within Custom Content" />
+                        </StackPanel>
+                    </shadui:Card>
+                </StackPanel>
             </StackPanel>
         </ScrollViewer>
     </DockPanel>

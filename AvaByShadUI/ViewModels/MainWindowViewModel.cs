@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using AvaByShadUI.Extensions;
 using AvaByShadUI.Model;
 using AvaByShadUI.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -13,6 +14,8 @@ namespace AvaByShadUI.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
+    public string AppName { get; } = Assembly.GetExecutingAssembly().GetName().Name ?? string.Empty;
+
     [ObservableProperty]
     public partial DialogManager DialogManager { get; set; }
 
@@ -46,7 +49,7 @@ public partial class MainWindowViewModel : ViewModelBase
         SelectedPage = navigationService.GetViewModel(CurrentRoute);
         pageManager.OnNavigate = SwitchPage;
     }
-    
+
     private void SwitchPage(INavigable page, string route = "")
     {
         if (!route.IsNullOrEmpty())
@@ -68,7 +71,7 @@ public partial class MainWindowViewModel : ViewModelBase
     /// </summary>
     [ObservableProperty]
     public partial string CurrentRoute { get; set; } = "home";
-    
+
     [RelayCommand]
     private void SwitchPage(string route)
     {
@@ -87,6 +90,13 @@ public partial class MainWindowViewModel : ViewModelBase
 
         ThemeWatcher.SwitchTheme(CurrentTheme);
         _logger.ZLogInformation($"切换主题 {CurrentTheme}");
+    }
+
+    [RelayCommand]
+    private void ShowAbout()
+    {
+        var vm = App.Service.GetService<AboutViewModel>();
+        DialogManager.ShowCustomDialog(vm);
     }
 
     public override void Dispose()

@@ -27,8 +27,4 @@
         <PackageReference Include="LyuLogExtension" />
         <PackageReference Include="ShadUI" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Controls\" />
-    </ItemGroup>
 </Project>
