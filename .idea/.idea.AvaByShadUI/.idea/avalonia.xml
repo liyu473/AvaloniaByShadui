@@ -4,12 +4,15 @@
     <option name="projectPerEditor">
       <map>
         <entry key="AvaByShadUI/App.axaml" value="AvaByShadUI.Desktop/AvaByShadUI.Desktop.csproj" />
+        <entry key="AvaByShadUI/Controls/Index.axaml" value="AvaByShadUI.Desktop/AvaByShadUI.Desktop.csproj" />
+        <entry key="AvaByShadUI/Controls/index.axaml" value="AvaByShadUI.Desktop/AvaByShadUI.Desktop.csproj" />
         <entry key="AvaByShadUI/Styles/Icons.axaml" value="AvaByShadUI.Desktop/AvaByShadUI.Desktop.csproj" />
         <entry key="AvaByShadUI/Styles/Index.axaml" value="AvaByShadUI.Desktop/AvaByShadUI.Desktop.csproj" />
         <entry key="AvaByShadUI/Styles/Menu.axaml" value="AvaByShadUI.Desktop/AvaByShadUI.Desktop.csproj" />
         <entry key="AvaByShadUI/Styles/TextBlock.axaml" value="AvaByShadUI.Desktop/AvaByShadUI.Desktop.csproj" />
         <entry key="AvaByShadUI/Styles/Tooltip.axaml" value="AvaByShadUI.Desktop/AvaByShadUI.Desktop.csproj" />
         <entry key="AvaByShadUI/Views/HomePage.axaml" value="AvaByShadUI.Desktop/AvaByShadUI.Desktop.csproj" />
+        <entry key="AvaByShadUI/Views/IconBrowserPage.axaml" value="AvaByShadUI.Desktop/AvaByShadUI.Desktop.csproj" />
         <entry key="AvaByShadUI/Views/MainView.axaml" value="AvaByShadUI.Desktop/AvaByShadUI.Desktop.csproj" />
         <entry key="AvaByShadUI/Views/MainWindow.axaml" value="AvaByShadUI.Desktop/AvaByShadUI.Desktop.csproj" />
         <entry key="AvaByShadUI/Views/SettingsPage.axaml" value="AvaByShadUI.Desktop/AvaByShadUI.Desktop.csproj" />

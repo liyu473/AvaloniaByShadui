@@ -43,6 +43,7 @@ public partial class MainWindowViewModel : ViewModelBase
         _logger = logger;
 
         _navigationService = navigationService;
+        SelectedPage = navigationService.GetViewModel(CurrentRoute);
         pageManager.OnNavigate = SwitchPage;
     }
     

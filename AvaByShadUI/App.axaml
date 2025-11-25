@@ -3,6 +3,7 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:avaByShadUi="clr-namespace:AvaByShadUI"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
     xmlns:themes="clr-namespace:ShadUI;assembly=ShadUI"
     RequestedThemeVariant="Default">
     <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
@@ -14,6 +15,9 @@
         <FontFamily x:Key="ManropeFont">avares://AvaByShadUI/Assets/Fonts#Manrope</FontFamily>
         <FontFamily x:Key="LucideIcon">avares://AvaByShadUI/Assets/Fonts#lucide</FontFamily>
         <FontFamily x:Key="ShadUIIcon">avares://AvaByShadUI/Assets/Fonts#shadui</FontFamily>
+
+        <Thickness x:Key="PageMargin">48,24</Thickness>
+        <system:Double x:Key="PageMaxWidth">900</system:Double>
     </Application.Resources>
     <Application.Styles>
         <themes:ShadTheme />

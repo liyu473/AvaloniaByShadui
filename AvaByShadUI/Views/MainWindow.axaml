@@ -12,10 +12,17 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     x:DataType="vm:MainWindowViewModel"
-    Icon="/Assets/avalonia-logo.ico"
     TitleFontWeight="SemiBold"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+    <shadui:Window.LogoContent>
+        <!--  替换图标  -->
+        <PathIcon
+            Width="14"
+            Height="14"
+            Margin="8,8,0,8"
+            Data="{x:Static shadui:Icons.Logo}" />
+    </shadui:Window.LogoContent>
     <shadui:Window.Hosts>
         <shadui:DialogHost
             x:Name="PART_DialogHost"
@@ -91,13 +98,13 @@
                         Content="主页"
                         IsChecked="True"
                         Route="home"
-                        ToolTip.Tip="{Binding $parent[shadui:Sidebar].Expanded, Converter={x:Static converters:BooleanConverters.NullOrString}, ConverterParameter='Dashboard'}">
+                        ToolTip.Tip="{Binding $parent[shadui:Sidebar].Expanded, Converter={x:Static converters:BooleanConverters.NullOrString}, ConverterParameter='主页'}">
                         <shadui:SidebarItem.Icon>
                             <Viewbox>
                                 <TextBlock
                                     Classes="LucideIcon"
                                     Foreground="{DynamicResource ForegroundColor}"
-                                    Text="&#57793;" />
+                                    Text="&#xE0F9;" />
                             </Viewbox>
                         </shadui:SidebarItem.Icon>
                     </shadui:SidebarItem>
@@ -106,20 +113,37 @@
                         CommandParameter="{Binding Route, RelativeSource={RelativeSource Self}}"
                         Content="设置"
                         Route="settings"
-                        ToolTip.Tip="{Binding $parent[shadui:Sidebar].Expanded, Converter={x:Static converters:BooleanConverters.NullOrString}, ConverterParameter='Dashboard'}">
+                        ToolTip.Tip="{Binding $parent[shadui:Sidebar].Expanded, Converter={x:Static converters:BooleanConverters.NullOrString}, ConverterParameter='设置'}">
                         <shadui:SidebarItem.Icon>
                             <Viewbox>
                                 <TextBlock
                                     Classes="LucideIcon"
                                     Foreground="{DynamicResource ForegroundColor}"
-                                    Text="&#57794;" />
+                                    Text="&#xE30B;" />
                             </Viewbox>
                         </shadui:SidebarItem.Icon>
                     </shadui:SidebarItem>
                 </StackPanel>
             </shadui:Sidebar>
 
-            <TransitioningContentControl Grid.Column="1" Content="{Binding SelectedPage}" />
+            <TransitioningContentControl 
+                Grid.Column="1" 
+                Content="{Binding SelectedPage}"
+                ClipToBounds="True">
+                <TransitioningContentControl.PageTransition>
+                    <CompositePageTransition>
+                        <CrossFade Duration="0:0:0.35" />
+                        <PageSlide Duration="0:0:0.5" Orientation="Horizontal">
+                            <PageSlide.SlideInEasing>
+                                <QuinticEaseOut />
+                            </PageSlide.SlideInEasing>
+                            <PageSlide.SlideOutEasing>
+                                <QuinticEaseOut />
+                            </PageSlide.SlideOutEasing>
+                        </PageSlide>
+                    </CompositePageTransition>
+                </TransitioningContentControl.PageTransition>
+            </TransitioningContentControl>
         </Grid>
         <shadui:ToastHost Manager="{Binding ToastManager}" />
     </Panel>

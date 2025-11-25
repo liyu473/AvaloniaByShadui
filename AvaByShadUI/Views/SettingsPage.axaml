@@ -7,5 +7,30 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    设置
+    <DockPanel LastChildFill="True">
+        <StackPanel
+            MaxWidth="{StaticResource PageMaxWidth}"
+            Margin="{StaticResource PageMargin}"
+            DockPanel.Dock="Top"
+            Spacing="4">
+            <TextBlock 
+                Classes="Title"
+                Text="Settings"/>
+
+            <TextBlock
+                Classes="p"
+                Text="设置页面"
+                TextWrapping="Wrap" />
+        </StackPanel>
+
+        <ScrollViewer>
+            <StackPanel
+                MaxWidth="{StaticResource PageMaxWidth}"
+                Margin="{StaticResource PageMargin}"
+                Spacing="32">
+
+
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
 </UserControl>

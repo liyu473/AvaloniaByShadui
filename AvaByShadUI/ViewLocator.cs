@@ -50,16 +50,6 @@ public class ViewLocator : IDataTemplate
         var control = (Control)Activator.CreateInstance(viewType)!;
         control.DataContext = param;
 
-        // Hook up disposal: when view is unloaded, dispose the ViewModel
-        control.Unloaded += (s, e) =>
-        {
-            if (control.DataContext is IDisposable disposable)
-            {
-                disposable.Dispose();
-            }
-            control.DataContext = null; // Break reference
-        };
-
         return control;
     }
 
