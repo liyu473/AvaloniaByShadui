@@ -1,0 +1,22 @@
+<Application
+    x:Class="AvaByShadUI.App"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:avaByShadUi="clr-namespace:AvaByShadUI"
+    xmlns:themes="clr-namespace:ShadUI;assembly=ShadUI"
+    RequestedThemeVariant="Default">
+    <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
+    <Application.DataTemplates>
+        <avaByShadUi:ViewLocator />
+    </Application.DataTemplates>
+    <Application.Resources>
+        <FontFamily x:Key="JetbrainsFont">avares://AvaByShadUI/Assets/Fonts#JetBrains Mono</FontFamily>
+        <FontFamily x:Key="ManropeFont">avares://AvaByShadUI/Assets/Fonts#Manrope</FontFamily>
+        <FontFamily x:Key="LucideIcon">avares://AvaByShadUI/Assets/Fonts#lucide</FontFamily>
+        <FontFamily x:Key="ShadUIIcon">avares://AvaByShadUI/Assets/Fonts#shadui</FontFamily>
+    </Application.Resources>
+    <Application.Styles>
+        <themes:ShadTheme />
+        <StyleInclude Source="avares://AvaByShadUI/Styles/Index.axaml" />
+    </Application.Styles>
+</Application>
