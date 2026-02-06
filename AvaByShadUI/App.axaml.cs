@@ -28,7 +28,7 @@ public partial class App : Application
             DisableAvaloniaDataAnnotationValidation();
             
             // Register dialogs(脱离ViewLocator的命名约定)
-            Service.RegisterDialogs();
+            Service.RegisterDialogs();            
             
             desktop.MainWindow = new MainWindow
             {

@@ -1,10 +1,12 @@
+using System;
 using AvaByShadUI.ViewModels;
 using Avalonia;
 using Jab;
 using LyuLogExtension;
+using LyuLogExtension.Builder;
 using Microsoft.Extensions.Logging;
 using ShadUI;
-using System;
+using ZLogger.Providers;
 
 namespace AvaByShadUI.Services;
 
@@ -19,7 +21,21 @@ namespace AvaByShadUI.Services;
 [Singleton(typeof(PageManager), Factory = nameof(PageManagerFactory))]
 public partial class ServiceProvider : IServiceProvider
 {
-    // 可替换 ZlogFactory实例，这里使用默认配置
+    public ServiceProvider()
+    {
+        ZLogFactory.Configure(builder =>
+            builder
+                .WithRetentionDays(30)
+                .WithCleanupInterval(TimeSpan.FromDays(1))
+                .AddFileOutput("logs/trace/", LogLevel.Trace)
+                .AddFileOutput("logs/info/", LogLevel.Information)
+                .FilterSystem()
+                .FilterMicrosoft()
+                .WithRollingInterval(RollingInterval.Day) // 按天滚动
+                .WithRollingSizeKB(5 * 1024)
+        );
+    }
+
     public ILogger<T> CreateLoggerGeneric<T>() => ZLogFactory.Get<T>();
 
     public ThemeWatcher ThemeWatcherFactory()
