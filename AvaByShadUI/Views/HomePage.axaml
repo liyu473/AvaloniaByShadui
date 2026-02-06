@@ -16,7 +16,7 @@
             Margin="{StaticResource PageMargin}"
             DockPanel.Dock="Top"
             Spacing="4">
-            <TextBlock Classes="Title" Text="Home" />
+            <TextBlock Classes="h2" Text="Home" />
             <TextBlock
                 Classes="p"
                 Text="home page for testing dialog and toast within sukiui"

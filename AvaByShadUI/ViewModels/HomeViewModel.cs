@@ -1,6 +1,5 @@
 using AvaByShadUI.Extensions;
 using AvaByShadUI.Model;
-using Avalonia.Controls;
 using CommunityToolkit.Mvvm.Input;
 using ShadUI;
 

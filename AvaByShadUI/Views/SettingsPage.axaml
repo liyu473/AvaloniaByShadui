@@ -14,7 +14,7 @@
             DockPanel.Dock="Top"
             Spacing="4">
             <TextBlock 
-                Classes="Title"
+                Classes="h2"
                 Text="Settings"/>
 
             <TextBlock

@@ -5,7 +5,8 @@ using AvaByShadUI.Model;
 using AvaByShadUI.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Extensions;
+using LyuExtensions.Aspects;
+using LyuExtensions.Extensions;
 using Microsoft.Extensions.Logging;
 using ShadUI;
 using ZLogger;
@@ -28,25 +29,24 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty]
     public partial ThemeMode CurrentTheme { get; set; } = ThemeMode.System;
 
+    [Inject]
     private readonly ILogger<MainWindowViewModel> _logger;
+
+    [Inject]
     private readonly NavigationService _navigationService;
 
     public MainWindowViewModel(
         DialogManager dialogManager,
         ToastManager toastManager,
         ThemeWatcher themeWatcher,
-        PageManager pageManager,
-        NavigationService navigationService,
-        ILogger<MainWindowViewModel> logger
+        PageManager pageManager
     )
     {
         DialogManager = dialogManager;
         ToastManager = toastManager;
         ThemeWatcher = themeWatcher;
-        _logger = logger;
 
-        _navigationService = navigationService;
-        SelectedPage = navigationService.GetViewModel(CurrentRoute);
+        SelectedPage = _navigationService?.GetViewModel(CurrentRoute);
         pageManager.OnNavigate = SwitchPage;
     }
 

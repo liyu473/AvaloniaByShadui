@@ -1,10 +1,10 @@
-using System;
 using AvaByShadUI.ViewModels;
 using Avalonia;
 using Jab;
-using LogExtension;
+using LyuLogExtension;
 using Microsoft.Extensions.Logging;
 using ShadUI;
+using System;
 
 namespace AvaByShadUI.Services;
 
@@ -20,13 +20,13 @@ namespace AvaByShadUI.Services;
 public partial class ServiceProvider : IServiceProvider
 {
     // 可替换 ZlogFactory实例，这里使用默认配置
-    public ILogger<T> CreateLoggerGeneric<T>() => ZlogFactory.Get<T>();
+    public ILogger<T> CreateLoggerGeneric<T>() => ZLogFactory.Get<T>();
 
     public ThemeWatcher ThemeWatcherFactory()
     {
         return new ThemeWatcher(Application.Current!);
     }
-    
+
     public PageManager PageManagerFactory()
     {
         return new PageManager(this);

@@ -11,7 +11,7 @@ namespace AvaByShadUI.ViewModels;
 
 public abstract class ViewModelBase : ObservableObject, INotifyDataErrorInfo, IDisposable
 {
-    private readonly Dictionary<string, List<string>> _errors = new();
+    private readonly Dictionary<string, List<string>> _errors = [];
     private bool _disposed;
 
     public bool HasErrors => _errors.Count != 0;
@@ -60,14 +60,14 @@ public abstract class ViewModelBase : ObservableObject, INotifyDataErrorInfo, ID
 
     protected void AddError(string propertyName, string error)
     {
-        if (!_errors.ContainsKey(propertyName))
+        if (!_errors.TryGetValue(propertyName, out List<string>? value))
         {
-            _errors[propertyName] = new List<string>();
+            value = [];
+            _errors[propertyName] = value;
         }
 
-        if (_errors[propertyName].Contains(error)) return;
-
-        _errors[propertyName].Add(error);
+        if (value.Contains(error)) return;
+        value.Add(error);
         OnErrorsChanged(propertyName);
     }
 
